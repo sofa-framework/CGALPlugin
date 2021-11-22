@@ -1,15 +1,7 @@
 ## CGALPlugin
-Use CGAL components in SOFA.
+Use CGAL components in a SOFA plugin.
 
-### AUTHORS :
- - Frédérick ROY
- - Olivier Comas
- - Yiyi Wei
-
-### LICENSE :
- - GPL check CGAL website for more details: https://doc.cgal.org/latest/Manual/packages.html
-
-### LOGS :
+### Components :
 - TriangularConvexHull3D: Created on: 27 oct. 2009 - Author: Frédérick ROY
 - MeshGenerationFromPolyhedron: Created on: 27 oct. 2009 - Author: Frédérick ROY
 - MeshGenerationFromImage: No logs
