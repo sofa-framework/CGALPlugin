@@ -1,20 +1,15 @@
+## CGALPlugin
+Use CGAL components in SOFA.
 
-************************************
-*            CGAL.txt              *
-************************************
-
-
-
-AUTHOR :
+### AUTHORS :
  - Frédérick ROY
  - Olivier Comas
  - Yiyi Wei
 
-
-LICENSE :
+### LICENSE :
  - GPL check CGAL website for more details: https://doc.cgal.org/latest/Manual/packages.html
 
-LOGS :
+### LOGS :
 - TriangularConvexHull3D: Created on: 27 oct. 2009 - Author: Frédérick ROY
 - MeshGenerationFromPolyhedron: Created on: 27 oct. 2009 - Author: Frédérick ROY
 - MeshGenerationFromImage: No logs
@@ -22,5 +17,3 @@ LOGS :
 - CylinderMesh: Created on: 21 mar. 2010 - Author: Yiyi
 - Refine2DMesh: Restored on (history lost): 04 mar. 2020 - Author: Erik Pernod
 
-OTHER COMMENTS :
-Use CGAL components in SOFA.
