@@ -31,12 +31,11 @@ set(SOURCE_FILES
     ${PLUGIN_CGAL_SRC_DIR}/UpsamplePointCloud.cpp
     ${PLUGIN_CGAL_SRC_DIR}/BooleanOperations.cpp
     )
-set(README_FILES CGALPlugin.txt)
+set(README_FILES README.md)
 
 # Dependencies
 find_package(SofaFramework REQUIRED)
 find_package(SofaSimulationCommon REQUIRED)
-find_package(image REQUIRED)
 find_package(CGAL REQUIRED)
 message(STATUS "CGAL VERSION = ${CGAL_VERSION}")
 
