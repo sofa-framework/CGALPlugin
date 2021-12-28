@@ -37,7 +37,15 @@ jobs:
           elif [[ "$RUNNER_OS" == "macOS" ]]; then
             brew install cgal
           elif [[ "$RUNNER_OS" == "Windows" ]]; then
-            vcpkg --triplet x64-windows install cgal
+            curl --output "${{ runner.temp }}/cgal_lib.zip" -L \
+                  "https://github.com/CGAL/cgal/releases/download/v5.3.1/CGAL-5.3.1-library.zip"
+            curl --output "${{ runner.temp }}/cgal_dep.zip" -L \
+                  "https://github.com/CGAL/cgal/releases/download/v5.3.1/CGAL-5.3.1-win64-auxiliary-libraries-gmp-mpfr.zip"
+            unzip -qq "${{ runner.temp }}/cgal_lib.zip" -d "${{ runner.temp }}/cgal_dir"
+            unzip -qq "${{ runner.temp }}/cgal_dep.zip" -d "${{ runner.temp }}/cgal_dir"
+            echo "CGAL_ROOT=${{ runner.temp }}/cgal_dir" | tee -a $GITHUB_ENV
+            echo "GMP_ROOT=${{ runner.temp }}/cgal_dir/auxiliary/gmp" | tee -a $GITHUB_ENV
+            echo "MPFR_LIBRARIES=${{ runner.temp }}/cgal_dir/auxiliary/gmp/lib/libmpfr-4.lib" | tee -a $GITHUB_ENV
           fi
       
       - name: Build and install
@@ -51,7 +59,7 @@ jobs:
                   -DCMAKE_PREFIX_PATH="$SOFA_ROOT/lib/cmake" \
                   -DCMAKE_BUILD_TYPE=Release \
                   -DCMAKE_INSTALL_PREFIX="$WORKSPACE_INSTALL_PATH" \
-                  -DCMAKE_TOOLCHAIN_FILE=C:\src\vcpkg\scripts\buildsystems\vcpkg.cmake
+                  -DMPFR_LIBRARIES="$MPFR_LIBRARIES" \
                   ../src \
               && ninja -v install"
           else
