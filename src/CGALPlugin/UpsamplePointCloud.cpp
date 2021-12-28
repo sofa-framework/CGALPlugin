@@ -44,7 +44,9 @@ typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
 typedef Kernel::Point_3 Point_3;
 typedef Kernel::Vector_3 Vector_3;
 typedef std::pair<Point_3, Vector_3> Pwn;
-typedef CGAL::Parallel_tag Concurrency_tag;
+//typedef CGAL::Parallel_tag Concurrency_tag;
+typedef CGAL::Sequential_tag Concurrency_tag; // edge_aware_upsample_point_set does not compile with Parallel_tag (at least with cgal v5.3.1)
+
 
 
 UpsamplePointCloud::UpsamplePointCloud()
