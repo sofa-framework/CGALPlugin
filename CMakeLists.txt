@@ -61,7 +61,7 @@ if(CGAL_VERSION VERSION_GREATER 4.9) # if CGAL >= 4.10
 endif()
 
 # Link the plugin library to its dependencies (other libraries).
-target_link_libraries(${PROJECT_NAME} PUBLIC Sofa.Core Sofa.Simulation.Common Sofa.Component.Mass Sofa.Component.MechanicalLoad SceneCreator)
+target_link_libraries(${PROJECT_NAME} PUBLIC Sofa.Core Sofa.Simulation.Core Sofa.Simulation.Common Sofa.Component.Mass Sofa.Component.MechanicalLoad SceneCreator)
 target_link_libraries(${PROJECT_NAME} PUBLIC CGAL::CGAL)
 if(image_FOUND)
     target_link_libraries(${PROJECT_NAME} PUBLIC image CGAL::CGAL_ImageIO)
