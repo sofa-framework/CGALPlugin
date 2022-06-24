@@ -20,8 +20,6 @@
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
 
-#include <SofaTest/Sofa_test.h>
-
 #include <sofa/defaulttype/VecTypes.h>
 #include <sofa/simulation/Simulation.h>
 #include <SofaSimulationGraph/DAGSimulation.h>
@@ -37,6 +35,9 @@
 
 #include <CGALPlugin/MeshGenerationFromImage.h>
 
+#include <sofa/testing/BaseTest.h>
+using sofa::testing::BaseTest;
+
 namespace cgal
 {
 
@@ -46,7 +47,7 @@ using core::objectmodel::New;
 using sofa::simulation::SceneLoaderXML;
 using sofa::core::ExecParams;
 
-struct MeshGenerationFromImage_test : public Sofa_test<>
+struct MeshGenerationFromImage_test : public BaseTest
 {
     sofa::simulation::Node::SPtr m_root;
     cgal::MeshGenerationFromImage< defaulttype::Vec3dTypes, defaulttype::ImageUC >::SPtr m_meshGenerator;
