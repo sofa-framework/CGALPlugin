@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 project(CGALPlugin VERSION 0.1)
 
-find_package(SceneCreator)
-
 set(PLUGIN_CGAL_SRC_DIR src/CGALPlugin)
 set(HEADER_FILES
     ${PLUGIN_CGAL_SRC_DIR}/config.h.in
@@ -35,6 +33,10 @@ set(SOURCE_FILES
     )
 set(README_FILES README.md)
 
+# find_package(Sofa.Simulation.Common REQUIRED)
+# find_package(Sofa.Component.Mass REQUIRED)
+# find_package(Sofa.Component.MechanicalLoad REQUIRED)
+
 # Dependencies
 find_package(SofaFramework REQUIRED)
 find_package(SofaSimulationCommon REQUIRED)
@@ -61,7 +63,7 @@ if(CGAL_VERSION VERSION_GREATER 4.9) # if CGAL >= 4.10
 endif()
 
 # Link the plugin library to its dependencies (other libraries).
-target_link_libraries(${PROJECT_NAME} PUBLIC Sofa.Core Sofa.Simulation.Core Sofa.Simulation.Common Sofa.Component.Mass Sofa.Component.MechanicalLoad SceneCreator)
+target_link_libraries(${PROJECT_NAME} PUBLIC Sofa.Core Sofa.Simulation.Core Sofa.Simulation.Common Sofa.Component.Mass Sofa.Component.MechanicalLoad)
 target_link_libraries(${PROJECT_NAME} PUBLIC CGAL::CGAL)
 if(image_FOUND)
     target_link_libraries(${PROJECT_NAME} PUBLIC image CGAL::CGAL_ImageIO)
