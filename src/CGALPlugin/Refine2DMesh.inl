@@ -339,7 +339,7 @@ namespace cgal
                             }
                             if (best_fit < 0)
                             {
-                                serr << "Invalid constrained edge." << sendl;
+                                msg_error() << "Invalid constrained edge.";
                                 break;
                             }
                         }

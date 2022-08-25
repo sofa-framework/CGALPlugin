@@ -266,7 +266,7 @@ void DecimateMesh<DataTypes>::surface_to_geometry(Surface &s)
                 }
                 else
                 {
-                    serr << "We've got facets with more than 3 vertices even though the facet reported to be trianglular..." << sendl;
+                    msg_error() << "We've got facets with more than 3 vertices even though the facet reported to be trianglular...";
                 }
 
             }
@@ -276,7 +276,7 @@ void DecimateMesh<DataTypes>::surface_to_geometry(Surface &s)
         }
         else
         {
-            serr << "Skipping non-trianglular facet" << sendl;
+            msg_error() << "Skipping non-trianglular facet";
         }
 
     }
