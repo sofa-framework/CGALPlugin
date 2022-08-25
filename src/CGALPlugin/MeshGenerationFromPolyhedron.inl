@@ -341,7 +341,10 @@ void MeshGenerationFromPolyhedron<DataTypes>::doUpdate()
             newPoints.push_back(p);
         }
     }
-    if (notconnected > 0) msg_error() << notconnected << " points are not connected to the mesh.";
+    if (notconnected > 0)
+    {
+        msg_error() << notconnected << " points are not connected to the mesh.";
+    }
 
     tetrahedra.clear();
     for( Cell_iterator cit = c3t3.cells_begin() ; cit != c3t3.cells_end() ; ++cit )
