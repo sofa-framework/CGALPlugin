@@ -22,14 +22,14 @@
 
 #include <sofa/defaulttype/VecTypes.h>
 #include <sofa/simulation/Simulation.h>
-#include <SofaSimulationGraph/DAGSimulation.h>
+#include <sofa/simulation/graph/DAGSimulation.h>
 #include <sofa/simulation/Node.h>
 #include <sofa/helper/logging/Messaging.h>
-#include <SofaBaseMechanics/MechanicalObject.h>
-#include <SofaBaseMechanics/UniformMass.h>
+#include <sofa/component/statecontainer/MechanicalObject.h>
+#include <sofa/component/mass/UniformMass.h>
 #include <SceneCreator/SceneCreator.h>
-#include <SofaBoundaryCondition/ConstantForceField.h>
-#include <SofaSimulationCommon/SceneLoaderXML.h>
+#include <sofa/component/mechanicalload/ConstantForceField.h>
+#include <sofa/simulation/common/SceneLoaderXML.h>
 
 #define CGALPLUGIN_MESHGENERATIONFROMIMAGE_CPP
 
