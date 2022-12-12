@@ -68,17 +68,7 @@ public:
     void doUpdate() override;
 
     void draw(const sofa::core::visual::VisualParams* vparams) override;
-
-    virtual std::string getTemplateName() const override
-    {
-        return templateName(this);
-    }
-
-    static std::string templateName(const MeshGenerationFromPolyhedron<DataTypes>* = NULL)
-    {
-        return DataTypes::Name();
-    }
-
+    
     //Inputs
     sofa::core::objectmodel::Data<VecCoord> f_X0; ///< Rest position coordinates of the degrees of freedom
     sofa::core::objectmodel::Data<SeqTriangles> f_triangles; ///< List of triangles

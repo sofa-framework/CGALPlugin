@@ -11,6 +11,7 @@ set(SOURCE_FILES
 find_package(Sofa.Testing REQUIRED)
 find_package(image QUIET)
 
+
 if(image_FOUND)
     find_package(Sofa.Component.StateContainer REQUIRED)
     find_package(SceneCreator REQUIRED)

@@ -340,6 +340,7 @@ namespace cgal
                             if (best_fit < 0)
                             {
                                 msg_error() << "Invalid constrained edge.";
+
                                 break;
                             }
                         }
