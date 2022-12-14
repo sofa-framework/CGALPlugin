@@ -59,16 +59,6 @@ public:
 
     void doUpdate() override;
 
-    virtual std::string getTemplateName() const override
-    {
-        return templateName(this);
-    }
-
-    static std::string templateName(const TriangularConvexHull3D<DataTypes>* = NULL)
-    {
-        return DataTypes::Name();
-    }
-
     //Inputs
     sofa::core::objectmodel::Data<VecCoord> f_X0; ///< Rest position coordinates of the degrees of freedom
 

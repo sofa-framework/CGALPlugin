@@ -68,16 +68,6 @@ public:
     void orientate();
     void draw(const sofa::core::visual::VisualParams*) override;
 
-    virtual std::string getTemplateName() const override
-    {
-        return templateName(this);
-    }
-
-    static std::string templateName(const CylinderMesh<DataTypes>* = NULL)
-    {
-        return DataTypes::Name();
-    }
-
     //Inputs
     sofa::core::objectmodel::Data<double> m_diameter; ///< Diameter
     sofa::core::objectmodel::Data<double> m_length; ///< Length
