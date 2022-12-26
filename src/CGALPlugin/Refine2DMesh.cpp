@@ -21,7 +21,6 @@
 ******************************************************************************/
 #define CGALPLUGIN_REFINE2DMESH_CPP
 
-#include <CGALPlugin/config.h>
 #include <CGALPlugin/Refine2DMesh.inl>
 #include <sofa/core/ObjectFactory.h>
 #include <sofa/defaulttype/VecTypes.h>
