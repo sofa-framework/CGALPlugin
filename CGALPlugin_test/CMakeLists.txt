@@ -21,7 +21,7 @@ endif()
 
 add_definitions("-DSOFACGAL_TEST_RESOURCES_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/../scenes/data/\"")
 add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})
-target_link_libraries(${PROJECT_NAME} CGALPlugin Sofa.Testing SceneCreator )
+target_link_libraries(${PROJECT_NAME} CGALPlugin Sofa.Testing)
 
 if(image_FOUND)
     target_link_libraries(${PROJECT_NAME} Sofa.Component.StateContainer image)
