@@ -61,7 +61,6 @@ struct Refine2DMesh_test : public sofa::testing::BaseSimulationTest
 
     void checkCreation()
     {
-        test compilation error
         EXPECT_MSG_NOEMIT(Error);
 
         // Check creation
