@@ -117,16 +117,6 @@ public:
 
     void draw(const sofa::core::visual::VisualParams* vparams) override;
 
-    virtual std::string getTemplateName() const override
-    {
-        return templateName(this);
-    }
-
-    static std::string templateName(const MeshGenerationFromImage<DataTypes, _ImageTypes>* = NULL)
-    {
-        return DataTypes::Name();
-    }
-
     //Inputs    
     sofa::core::objectmodel::DataFileName d_filename; ///< Image file
     sofa::core::objectmodel::Data< ImageTypes > d_image; ///< image input

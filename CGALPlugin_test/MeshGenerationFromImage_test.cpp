@@ -83,7 +83,7 @@ struct MeshGenerationFromImage_test : public BaseTest
         std::string scene = scene1+imageContainerLine+scene2;
 
         m_root = sofa::simulation::SceneLoaderXML::loadFromMemory(
-                "scene", scene.c_str(), scene.size());
+                "scene", scene.c_str());
 
         m_root->getContext()->get(m_meshGenerator);
 
@@ -117,7 +117,7 @@ struct MeshGenerationFromImage_test : public BaseTest
         std::string scene = scene1+vtkLoaderLine+imageContainerLine+scene2;
 
         m_root = sofa::simulation::SceneLoaderXML::loadFromMemory(
-                "scene", scene.c_str(), scene.size());
+                "scene", scene.c_str());
 
         m_root->getContext()->get(m_meshGenerator);
 
