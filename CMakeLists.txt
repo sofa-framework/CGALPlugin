@@ -66,6 +66,7 @@ if(image_FOUND)
     target_link_libraries(${PROJECT_NAME} PUBLIC image CGAL::CGAL_ImageIO)
 endif()
 
+set_property(TARGET ${PROJECT_NAME} PROPERTY JOB_POOL_COMPILE 4)
 
 # Install rules for the library and the headers; CMake package configurations files
 sofa_create_package_with_targets(
