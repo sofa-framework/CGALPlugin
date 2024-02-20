@@ -69,7 +69,7 @@ struct MeshGenerationFromImage_test : public BaseTest
         std::string imageContainerLine = "<ImageContainer name=\"image\" template=\"ImageUC\" filename=\"" + std::string(SOFACGAL_TEST_RESOURCES_DIR) + "image/image-cube.inr\"/>";
 
         const char *s2 = R"scene2(
-                    <MeshGenerationFromImage template="Vec3d" name="generator" printLog="true" drawTetras="false"
+                    <MeshGenerationFromImage template="Vec3d,ImageUC" name="generator" printLog="true" drawTetras="false"
                             image="@image.image" transform="@image.transform"
                             cellSize="5" facetSize="5" edgeSize="5" facetApproximation="0.1"  facetAngle="30" cellRatio="3"  ordering="0"
                          />
@@ -103,7 +103,7 @@ struct MeshGenerationFromImage_test : public BaseTest
         std::string imageContainerLine = "<ImageContainer name=\"image\" template=\"ImageUC\" filename=\"" + std::string(SOFACGAL_TEST_RESOURCES_DIR) + "image/image-cube.inr\"/>";
 
         const char *s2 = R"scene2(
-                    <MeshGenerationFromImage template="Vec3d" name="generator" printLog="true" drawTetras="true"
+                    <MeshGenerationFromImage template="Vec3d,ImageUC" name="generator" printLog="true" drawTetras="true"
                             image="@image.image" transform="@image.transform"
                             cellSize="5" facetSize="5" facetApproximation="0.1"  facetAngle="30" cellRatio="3"  ordering="0"
                             label="1 2 3" labelCellSize="0.15 0.15 0.15" labelCellData="100 200 300" features="@loader.position"/>
