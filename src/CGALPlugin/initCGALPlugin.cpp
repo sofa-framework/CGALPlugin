@@ -50,7 +50,7 @@ void initExternalModule()
 
 const char* getModuleName()
 {
-    return "CGAL Plugin";
+    return "CGALPlugin";
 }
 
 const char* getModuleVersion()
