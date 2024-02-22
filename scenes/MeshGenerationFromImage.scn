@@ -6,9 +6,9 @@
     
 	<BackgroundSetting color="0 0.16862745098 0.21176470588"/>
 	<VisualStyle displayFlags="showVisual" />
-	<OglGrid/>
+	<VisualGrid/>
 	<OglSceneFrame/>
-	<OglLineAxis/>
+	<LineAxis/>
 
 	<ImageContainer name="image" template="ImageUC" filename="data/image/image-cube.inr"/>
 	<!-- <ImageViewer template="ImageUC" src="@image"/> -->
