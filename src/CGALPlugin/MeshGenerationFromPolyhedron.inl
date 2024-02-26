@@ -418,7 +418,7 @@ void MeshGenerationFromPolyhedron<DataTypes>::draw(const sofa::core::visual::Vis
         helper::ReadAccessor< Data<SeqTetrahedra> > tetrahedra = f_tetrahedra;
 
         vparams->drawTool()->setLightingEnabled(false);
-        std::vector< type::Vector3 > points[4];
+        std::vector< type::Vec3 > points[4];
         for(size_t i=0; i<tetrahedra.size(); ++i)
         {
             int a = tetrahedra[i][0];
@@ -464,7 +464,7 @@ void MeshGenerationFromPolyhedron<DataTypes>::draw(const sofa::core::visual::Vis
             vparams->drawTool()->setPolygonMode(0,true);
 
         vparams->drawTool()->setLightingEnabled(false);
-        std::vector< type::Vector3 > points;
+        std::vector< type::Vec3 > points;
         for(size_t i=0; i<triangles.size(); ++i)
         {
             int a = triangles[i][0];
