@@ -240,7 +240,7 @@ void MeshGenerationFromImage<DataTypes, _ImageTypes>::doUpdate()
 
     size_t fi = 0;
 
-    Vector3 translation = Vector3(image3.image()->tx, image3.image()->ty, image3.image()->tz);
+    Vec3 translation = Vec3(image3.image()->tx, image3.image()->ty, image3.image()->tz);
     for (Polylines::iterator l = polylines.begin(); l != polylines.end(); l++, fi++) {
         Coord ft = fts[fi];
 
@@ -338,11 +338,11 @@ void MeshGenerationFromImage<DataTypes, _ImageTypes>::doUpdate()
                 for (unsigned int c=0; c<p.size(); c++)
                     if (p[c] < bbmin[c]) bbmin[c] = p[c]; else if (p[c] > bbmax[c]) bbmax[c] = p[c];
 
-            Vector3 rotation = Vector3(image3.image()->rx, image3.image()->ry, image3.image()->rz);
+            Vec3 rotation = Vec3(image3.image()->rx, image3.image()->ry, image3.image()->rz);
             type::Quat<SReal> q = type::Quat<Real>::createQuaterFromEuler(rotation*M_PI/180.0);
             p= q.rotate(p);
 
-            Vector3 translation = Vector3(image3.image()->tx, image3.image()->ty, image3.image()->tz);
+            Vec3 translation = Vec3(image3.image()->tx, image3.image()->ty, image3.image()->tz);
             newPoints.push_back(p+translation);
         }
     }
@@ -445,7 +445,7 @@ void MeshGenerationFromImage<DataTypes, _ImageTypes>::draw(const sofa::core::vis
         helper::ReadAccessor< Data< vector<int> > > tetraDomain = d_tetraDomain;
 
         vparams->drawTool()->setLightingEnabled(false);
-        std::vector< std::vector<type::Vector3> > pointsDomains[4];
+        std::vector< std::vector<type::Vec3> > pointsDomains[4];
         for(unsigned int i=0; i<4; ++i)
             pointsDomains[i].resize(m_tetraDomainLabels.size());
         int domainLabel = 0;
