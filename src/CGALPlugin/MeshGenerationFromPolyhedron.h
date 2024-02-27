@@ -23,7 +23,7 @@
 
 #define CGAL_MESH_3_VERBOSE 0
 
-
+#include <CGALPlugin/config.h>
 #include <sofa/core/DataEngine.h>
 #include <sofa/core/topology/BaseMeshTopology.h>
 #include <sofa/core/visual/VisualParams.h>

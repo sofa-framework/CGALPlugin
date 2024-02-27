@@ -21,6 +21,7 @@
 ******************************************************************************/
 #pragma once
 
+#include <CGALPlugin/config.h>
 #include <sofa/core/DataEngine.h>
 #include <sofa/core/topology/BaseMeshTopology.h>
 #include <sofa/type/Vec.h>

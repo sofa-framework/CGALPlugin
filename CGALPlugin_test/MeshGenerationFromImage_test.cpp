@@ -27,7 +27,6 @@
 #include <sofa/helper/logging/Messaging.h>
 #include <sofa/component/statecontainer/MechanicalObject.h>
 #include <sofa/component/mass/UniformMass.h>
-#include <SceneCreator/SceneCreator.h>
 #include <sofa/component/mechanicalload/ConstantForceField.h>
 #include <sofa/simulation/common/SceneLoaderXML.h>
 
@@ -42,7 +41,6 @@ namespace cgal
 {
 
 using namespace sofa;
-using namespace modeling;
 using core::objectmodel::New;
 using sofa::simulation::SceneLoaderXML;
 using sofa::core::ExecParams;

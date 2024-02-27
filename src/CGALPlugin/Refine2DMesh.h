@@ -21,6 +21,7 @@
 ******************************************************************************/
 #pragma once
 
+#include <CGALPlugin/config.h>
 #include <sofa/type/Vec.h>
 #include <sofa/defaulttype/VecTypes.h>
 #include <sofa/core/DataEngine.h>
@@ -93,7 +94,7 @@ public:
 };
 
 #if !defined(CGALPLUGIN_REFINE2DMESH_CPP)
-template class SOFA_CGALPLUGIN_API Refine2DMesh<sofa::defaulttype::Vec3Types>;
+extern template class SOFA_CGALPLUGIN_API Refine2DMesh<sofa::defaulttype::Vec3Types>;
 #endif
 
 } //cgal
