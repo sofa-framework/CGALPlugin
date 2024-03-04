@@ -34,12 +34,13 @@ jobs:
             sudo apt-get update
             sudo apt-get -qq install libcgal-dev
           elif [[ "$RUNNER_OS" == "macOS" ]]; then
+            rm /usr/local/bin/2to3
             brew install cgal
           elif [[ "$RUNNER_OS" == "Windows" ]]; then
             curl --output "${{ runner.temp }}/cgal_lib.zip" -L \
-                  "https://github.com/CGAL/cgal/releases/download/v5.3.1/CGAL-5.3.1-library.zip"
+                  "https://github.com/CGAL/cgal/releases/download/v5.4.1/CGAL-5.4.1.zip"
             curl --output "${{ runner.temp }}/cgal_dep.zip" -L \
-                  "https://github.com/CGAL/cgal/releases/download/v5.3.1/CGAL-5.3.1-win64-auxiliary-libraries-gmp-mpfr.zip"
+                  "https://github.com/CGAL/cgal/releases/download/v5.4.1/CGAL-5.4.1-win64-auxiliary-libraries-gmp-mpfr.zip"
             unzip -qq "${{ runner.temp }}/cgal_lib.zip" -d "${{ runner.temp }}/cgal_dir"
             unzip -qq "${{ runner.temp }}/cgal_dep.zip" -d "${{ runner.temp }}/cgal_dir"
             echo "CGAL_ROOT=${{ runner.temp }}/cgal_dir" | tee -a $GITHUB_ENV
