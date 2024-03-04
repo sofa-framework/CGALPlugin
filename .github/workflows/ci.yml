@@ -11,29 +11,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, macos-11, windows-2019]
-        sofa_branch: [master, v22.12]
+        os: [ubuntu-22.04, macos-13, windows-2022]
+        sofa_branch: [master, v23.12]
 
     steps:
-      # https://github.com/actions/runner-images/issues/6817
-      - name: (Mac) Workaround for homebrew # https://github.com/rancher-sandbox/lima-and-qemu/pull/20
-        shell: bash
-        if: runner.os == 'macOS'
-        run: |
-            rm -f /usr/local/bin/2to3
-            rm -f /usr/local/bin/idle3
-            rm -f /usr/local/bin/pydoc3
-            rm -f /usr/local/bin/python3
-            rm -f /usr/local/bin/python3-config
-            rm -f /usr/local/bin/2to3-3.11
-            rm -f /usr/local/bin/idle3.11
-            rm -f /usr/local/bin/pydoc3.11
-            rm -f /usr/local/bin/python3.11
-            rm -f /usr/local/bin/python3.11-config
-            
       - name: Setup SOFA and environment
         id: sofa
-        uses: sofa-framework/sofa-setup-action@v4
+        uses: sofa-framework/sofa-setup-action@v5
         with:
           sofa_root: ${{ github.workspace }}/sofa
           sofa_version: ${{ matrix.sofa_branch }}
@@ -50,12 +34,13 @@ jobs:
             sudo apt-get update
             sudo apt-get -qq install libcgal-dev
           elif [[ "$RUNNER_OS" == "macOS" ]]; then
+            rm /usr/local/bin/2to3
             brew install cgal
           elif [[ "$RUNNER_OS" == "Windows" ]]; then
             curl --output "${{ runner.temp }}/cgal_lib.zip" -L \
-                  "https://github.com/CGAL/cgal/releases/download/v5.3.1/CGAL-5.3.1-library.zip"
+                  "https://github.com/CGAL/cgal/releases/download/v5.4.1/CGAL-5.4.1.zip"
             curl --output "${{ runner.temp }}/cgal_dep.zip" -L \
-                  "https://github.com/CGAL/cgal/releases/download/v5.3.1/CGAL-5.3.1-win64-auxiliary-libraries-gmp-mpfr.zip"
+                  "https://github.com/CGAL/cgal/releases/download/v5.4.1/CGAL-5.4.1-win64-auxiliary-libraries-gmp-mpfr.zip"
             unzip -qq "${{ runner.temp }}/cgal_lib.zip" -d "${{ runner.temp }}/cgal_dir"
             unzip -qq "${{ runner.temp }}/cgal_dep.zip" -d "${{ runner.temp }}/cgal_dir"
             echo "CGAL_ROOT=${{ runner.temp }}/cgal_dir" | tee -a $GITHUB_ENV
