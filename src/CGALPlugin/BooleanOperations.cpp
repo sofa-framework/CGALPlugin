@@ -20,7 +20,7 @@
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
 #include <CGALPlugin/BooleanOperations.h>
-
+#include <CGALPlugin/config.h>
 #include <sofa/core/ObjectFactory.h>
 
 int BooleanOperationsClass = sofa::core::RegisterObject("Functions to corefine triangulated surface meshes and compute triangulated surface meshes of the union, difference and intersection of the bounded volumes.")

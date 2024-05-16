@@ -24,7 +24,7 @@
 #include <CGAL/Polyhedron_3.h>
 #include <CGAL/poisson_surface_reconstruction.h>
 #include <CGAL/property_map.h>
-
+#include <CGALPlugin/config.h>
 #include <sofa/core/ObjectFactory.h>
 
 int PoissonSurfaceReconstructionClass = sofa::core::RegisterObject("Generate triangular surface mesh from point cloud")
