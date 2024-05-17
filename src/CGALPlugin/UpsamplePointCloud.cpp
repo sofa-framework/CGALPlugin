@@ -23,7 +23,7 @@
 
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/edge_aware_upsample_point_set.h>
-
+#include <CGALPlugin/config.h>
 #include <sofa/core/ObjectFactory.h>
 
 

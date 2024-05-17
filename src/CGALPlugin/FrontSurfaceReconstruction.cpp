@@ -22,7 +22,7 @@
 #include <CGALPlugin/FrontSurfaceReconstruction.h>
 
 #include <CGAL/Advancing_front_surface_reconstruction.h>
-
+#include <CGALPlugin/config.h>
 #include <sofa/core/ObjectFactory.h>
 
 
