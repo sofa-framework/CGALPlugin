@@ -67,7 +67,7 @@ if(image_FOUND)
 endif()
 
 set_property(GLOBAL PROPERTY JOB_POOLS one_jobs=1 two_jobs=2 three_jobs=3 four_jobs=4)
-set_property(TARGET ${PROJECT_NAME} PROPERTY JOB_POOL_COMPILE four_jobs)
+set_property(TARGET ${PROJECT_NAME} PROPERTY JOB_POOL_COMPILE one_jobs)
 
 
 # Install rules for the library and the headers; CMake package configurations files
