@@ -52,11 +52,6 @@ struct MeshGenerationFromImage_test : public BaseTest
     sofa::simulation::Node::SPtr m_root;
     cgal::MeshGenerationFromImage< defaulttype::Vec3dTypes, defaulttype::ImageUC >::SPtr m_meshGenerator;
 
-    void SetUp()
-    {
-
-    }
-
     void loadSceneDefault()
     {
         /// a scene defined using raw-strings (C++11)
