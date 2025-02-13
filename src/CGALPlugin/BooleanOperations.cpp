@@ -82,7 +82,7 @@ struct Exact_vertex_point_map
 
 
 BooleanOperations::BooleanOperations()
-    : d_operation(initData(&d_operation, sofa::helper::OptionsGroup(3,"union","intersection","difference"), "operation","Boolean operation"))
+    : d_operation(initData(&d_operation, sofa::helper::OptionsGroup{"union","intersection","difference"}, "operation","Boolean operation"))
     , d_positions1In(initData (&d_positions1In, "position1", "Input positions of the first mesh"))
     , d_positions2In(initData (&d_positions2In, "position2", "Input positions of the second mesh"))
     , d_triangles1In(initData (&d_triangles1In, "triangles1", "Input triangles of the first mesh"))
