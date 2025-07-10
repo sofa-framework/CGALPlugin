@@ -105,7 +105,7 @@ void CylinderMesh<DataTypes>::doUpdate()
             {
                 Point p(i*t, j*t, k*t);
                 points.push_back(p);
-                Index g(i,j,k);
+                Index g({i,j,k});
                 m_ptID.insert(std::make_pair(g,count));
                 ++count;
             }
@@ -124,7 +124,7 @@ void CylinderMesh<DataTypes>::doUpdate()
             {
                 Point p(i*t, j*t, k*t);
                 points.push_back(p);
-                Index g(i,j,k);
+                Index g({i,j,k});
                 m_ptID.insert(std::make_pair(g,count));
                 ++count;
             }
@@ -142,7 +142,7 @@ void CylinderMesh<DataTypes>::doUpdate()
         {
             Point p(-n*t, j*t, k*t);
             points.push_back(p);
-            Index g(-n,j,k);
+            Index g({-n,j,k});
             m_ptID.insert(std::make_pair(g,count));
             ++count;
         }
@@ -154,7 +154,7 @@ void CylinderMesh<DataTypes>::doUpdate()
         {
             Point p(n*t, j*t, k*t);
             points.push_back(p);
-            Index g(n,j,k);
+            Index g({n,j,k});
             m_ptID.insert(std::make_pair(g,count));
             ++count;
         }
@@ -166,7 +166,7 @@ void CylinderMesh<DataTypes>::doUpdate()
         {
             Point p(i*t, -n*t, k*t);
             points.push_back(p);
-            Index g(i,-n,k);
+            Index g({i,-n,k});
             m_ptID.insert(std::make_pair(g,count));
             ++count;
         }
@@ -178,7 +178,7 @@ void CylinderMesh<DataTypes>::doUpdate()
         {
             Point p(i*t, n*t, k*t);
             points.push_back(p);
-            Index g(i,n,k);
+            Index g({i,n,k});
             m_ptID.insert(std::make_pair(g,count));
             ++count;
         }
@@ -191,7 +191,7 @@ void CylinderMesh<DataTypes>::doUpdate()
         {
             Point p(i*t, j*t, -m*t);
             points.push_back(p);
-            Index g(i,j,-m);
+            Index g({i,j,-m});
             m_ptID.insert(std::make_pair(g,count));
             ++count;
         }
@@ -204,7 +204,7 @@ void CylinderMesh<DataTypes>::doUpdate()
         {
             Point p(i*t, j*t, m*t);
             points.push_back(p);
-            Index g(i,j,m);
+            Index g({i,j,m});
             m_ptID.insert(std::make_pair(g,count));
             ++count;
         }
@@ -222,10 +222,10 @@ void CylinderMesh<DataTypes>::doUpdate()
             for(int i = b1; i <= b2; i+=2)
                 //for(int i = -n+1; i < n-2; i+=2)
             {
-                Index c1(i,j,k), c2(i+2,j,k);
+                Index c1({i,j,k}), c2({i+2,j,k});
                 if(m_ptID.find(c1) == m_ptID.end() || m_ptID.find(c2) == m_ptID.end())
                     msg_error() << "Tetrahedron is out of boundary. c ";
-                Index p[4] = {Index(i+1,j-1,k-1), Index(i+1,j+1,k-1), Index(i+1,j+1,k+1), Index(i+1,j-1,k+1)};
+                Index p[4] = {Index({i+1,j-1,k-1}), Index({i+1,j+1,k-1}), Index({i+1,j+1,k+1}), Index({i+1,j-1,k+1})};
                 for(int s = 0; s < 4; ++s)
                 {
                     if(m_ptID.find(p[s]) == m_ptID.end() || m_ptID.find(p[(s+1)%4]) == m_ptID.end())
@@ -245,10 +245,10 @@ void CylinderMesh<DataTypes>::doUpdate()
             for(int j = b1; j <= b2; j+=2)
                 //for(int j = -n+1; j < n-2; j+=2)
             {
-                Index c1(i,j,k), c2(i,j+2,k);
+                Index c1({i,j,k}), c2({i,j+2,k});
                 if(m_ptID.find(c1) == m_ptID.end() || m_ptID.find(c2) == m_ptID.end())
                     msg_info() << "Tetrahedron is out of boundary. c";
-                Index p[4] = {Index(i-1,j+1,k-1), Index(i+1,j+1,k-1), Index(i+1,j+1,k+1), Index(i-1,j+1,k+1)};
+                Index p[4] = {Index({i-1,j+1,k-1}), Index({i+1,j+1,k-1}), Index({i+1,j+1,k+1}), Index({i-1,j+1,k+1})};
                 for(int s = 0; s < 4; ++s)
                 {
                     if(m_ptID.find(p[s]) == m_ptID.end() || m_ptID.find(p[(s+1)%4]) == m_ptID.end())
@@ -268,8 +268,8 @@ void CylinderMesh<DataTypes>::doUpdate()
         {
             for(int k = -m+1; k <= m-3; k+=2)
             {
-                Index c1(i,j,k), c2(i,j,k+2);
-                Index p[4] = {Index(i-1,j-1,k+1), Index(i+1,j-1,k+1), Index(i+1,j+1,k+1), Index(i-1,j+1,k+1)};
+                Index c1({i,j,k}), c2({i,j,k+2});
+                Index p[4] = {Index({i-1,j-1,k+1}), Index({i+1,j-1,k+1}), Index({i+1,j+1,k+1}), Index({i-1,j+1,k+1})};
                 if(m_ptID.find(c1) == m_ptID.end() || m_ptID.find(c2) == m_ptID.end())
                     msg_error() << "Tetrahedron is out of boundary. c";
                 bool flag[4] = {true, true, true, true};
@@ -294,10 +294,10 @@ void CylinderMesh<DataTypes>::doUpdate()
         for(int j = b1; j <= b2; j+=2)
             //for(int j = -n+1; j <= n-1; j+=2)
         {
-            Index c1(-n+1,j,k), c2(-n,j,k);
+            Index c1({-n+1,j,k}), c2({-n,j,k});
             if(m_ptID.find(c1) == m_ptID.end() || m_ptID.find(c2) == m_ptID.end())
                 msg_error() << "Tetrahedron is out of boundary.";
-            Index p[4] = {Index(-n,j-1,k-1), Index(-n,j+1,k-1), Index(-n,j+1,k+1), Index(-n,j-1,k+1)};
+            Index p[4] = {Index({-n,j-1,k-1}), Index({-n,j+1,k-1}), Index({-n,j+1,k+1}), Index({-n,j-1,k+1})};
             for(int s = 0; s < 4; ++s)
             {
                 if(m_ptID.find(p[s]) == m_ptID.end() || m_ptID.find(p[(s+1)%4]) == m_ptID.end())
@@ -313,10 +313,10 @@ void CylinderMesh<DataTypes>::doUpdate()
         for(int j = b1; j <= b2; j+=2)
             //for(int j = -n+1; j < n; j+=2)
         {
-            Index c1(n-1,j,k), c2(n,j,k);
+            Index c1({n-1,j,k}), c2({n,j,k});
             if(m_ptID.find(c1) == m_ptID.end() || m_ptID.find(c2) == m_ptID.end())
                 msg_error() << "Tetrahedron is out of boundary.";
-            Index p[4] = {Index(n,j-1,k-1), Index(n,j+1,k-1), Index(n,j+1,k+1), Index(n,j-1,k+1)};
+            Index p[4] = {Index({n,j-1,k-1}), Index({n,j+1,k-1}), Index({n,j+1,k+1}), Index({n,j-1,k+1})};
             for(int s = 0; s < 4; ++s)
             {
                 if(m_ptID.find(p[s]) == m_ptID.end() || m_ptID.find(p[(s+1)%4]) == m_ptID.end())
@@ -333,10 +333,10 @@ void CylinderMesh<DataTypes>::doUpdate()
         for(int i = b1; i <= b2; i+=2)
             //for(int i = -n+1; i < n; i+=2)
         {
-            Index c1(i,-n+1,k), c2(i,-n,k);
+            Index c1({i,-n+1,k}), c2({i,-n,k});
             if(m_ptID.find(c1) == m_ptID.end() || m_ptID.find(c2) == m_ptID.end())
                 msg_error() << "Tetrahedron is out of boundary.";
-            Index p[4] = {Index(i-1,-n,k-1), Index(i+1,-n,k-1), Index(i+1,-n,k+1), Index(i-1,-n,k+1)};
+            Index p[4] = {Index({i-1,-n,k-1}), Index({i+1,-n,k-1}), Index({i+1,-n,k+1}), Index({i-1,-n,k+1})};
             for(int s = 0; s < 4; ++s)
             {
                 if(m_ptID.find(p[s]) == m_ptID.end() || m_ptID.find(p[(s+1)%4]) == m_ptID.end())
@@ -351,10 +351,10 @@ void CylinderMesh<DataTypes>::doUpdate()
         for(int i = b1; i <= b2; i+=2)
             //for(int i = -n+1; i < n; i+=2)
         {
-            Index c1(i,n-1,k), c2(i,n,k);
+            Index c1({i,n-1,k}), c2({i,n,k});
             if(m_ptID.find(c1) == m_ptID.end() || m_ptID.find(c2) == m_ptID.end())
                 msg_error() << "Tetrahedron is out of boundary.";
-            Index p[4] = {Index(i-1,n,k-1), Index(i+1,n,k-1), Index(i+1,n,k+1), Index(i-1,n,k+1)};
+            Index p[4] = {Index({i-1,n,k-1}), Index({i+1,n,k-1}), Index({i+1,n,k+1}), Index({i-1,n,k+1})};
             for(int s = 0; s < 4; ++s)
             {
                 if(m_ptID.find(p[s]) == m_ptID.end() || m_ptID.find(p[(s+1)%4]) == m_ptID.end())
@@ -371,10 +371,10 @@ void CylinderMesh<DataTypes>::doUpdate()
         for(int j = b1; j <= b2; j+=2)
             //for(int j = -n+1; j < n; j+=2)
         {
-            Index c1(i,j,-m+1), c2(i,j,-m);
+            Index c1({i,j,-m+1}), c2({i,j,-m});
             if(m_ptID.find(c1) == m_ptID.end() || m_ptID.find(c2) == m_ptID.end())
                 msg_error() << "Tetrahedron is out of boundary. c";
-            Index p[4] = {Index(i-1,j-1,-m), Index(i+1,j-1,-m), Index(i+1,j+1,-m), Index(i-1,j+1,-m)};
+            Index p[4] = {Index({i-1,j-1,-m}), Index({i+1,j-1,-m}), Index({i+1,j+1,-m}), Index({i-1,j+1,-m})};
             bool flag[4] = {true, true, true, true};
             for(int s = 0; s < 4; ++s)
                 if(m_ptID.find(p[s]) == m_ptID.end())
@@ -397,10 +397,10 @@ void CylinderMesh<DataTypes>::doUpdate()
         b1 = MAX(-n+1, MAX(-2*a-i, -2*a+i)), b2 = MIN(n-1, MIN(2*a-i, 2*a+i));
         for(int j = b1; j <= b2; j+=2)
         {
-            Index c1(i,j,m-1), c2(i,j,m);
+            Index c1({i,j,m-1}), c2({i,j,m});
             if(m_ptID.find(c1) == m_ptID.end() || m_ptID.find(c2) == m_ptID.end())
                 msg_error() << "Tetrahedron is out of boundary.";
-            Index p[4] = {Index(i-1,j-1,m), Index(i+1,j-1,m), Index(i+1,j+1,m), Index(i-1,j+1,m)};
+            Index p[4] = {Index({i-1,j-1,m}), Index({i+1,j-1,m}), Index({i+1,j+1,m}), Index({i-1,j+1,m})};
             bool flag[4] = {true, true, true, true};
             for(int s = 0; s < 4; ++s)
                 if(m_ptID.find(p[s]) == m_ptID.end())
