@@ -23,36 +23,10 @@
 
 #include <CGALPlugin/MeshGenerationFromPolyhedron.h>
 
-#if CGAL_VERSION_NR <= CGAL_VERSION_NUMBER(4,9,1)
-#include <CGAL/AABB_intersections.h>
-#endif
-#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
-#include <CGAL/Mesh_3/Robust_intersection_traits_3.h>
-
-#include <CGAL/Mesh_triangulation_3.h>
-#include <CGAL/Mesh_complex_3_in_triangulation_3.h>
-#include <CGAL/Mesh_criteria_3.h>
-
-#include <CGAL/Polyhedral_mesh_domain_3.h>
-#include <CGAL/make_mesh_3.h>
-#include <CGAL/refine_mesh_3.h>
-#if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(3,8,0)
-#include <CGAL/Polyhedral_mesh_domain_with_features_3.h>
-#endif
-
-// IO
-#include <CGAL/IO/Polyhedron_iostream.h>
-
-
-//CGAL
-//struct K: public CGAL::Exact_predicates_inexact_constructions_kernel {};
-typedef CGAL::Exact_predicates_inexact_constructions_kernel K;
 
 using namespace sofa;
 
-#if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(3,5,0)
-using namespace CGAL::parameters;
-#endif
+
 
 namespace cgal
 {
@@ -159,42 +133,6 @@ void printStats(C3t3& c3t3, Obj* obj, const char* step = "")
 template <class DataTypes>
 void MeshGenerationFromPolyhedron<DataTypes>::doUpdate()
 {
-    // Domain
-    // (we use exact intersection computation with Robust_intersection_traits_3)
-
-#if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(3,8,0)
-    typedef typename CGAL::Mesh_3::Robust_intersection_traits_3<K> Geom_traits;
-    //typedef K Geom_traits;
-    typedef typename CGAL::Mesh_polyhedron_3<Geom_traits>::type Polyhedron;
-    typedef typename Polyhedron::HalfedgeDS HalfedgeDS;
-    typedef typename CGAL::Polyhedral_mesh_domain_with_features_3<Geom_traits, Polyhedron> Mesh_domain;
-#else
-    typedef typename CGAL::Mesh_3::Robust_intersection_traits_3<K> Geom_traits;
-    typedef typename CGAL::Polyhedron_3<Geom_traits> Polyhedron;
-    typedef typename Polyhedron::HalfedgeDS HalfedgeDS;
-    typedef typename CGAL::Polyhedral_mesh_domain_3<Polyhedron, Geom_traits> Mesh_domain;
-#endif
-
-
-    // Triangulation
-    typedef typename CGAL::Mesh_triangulation_3<Mesh_domain>::type Tr;
-#if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(3,8,0)
-    typedef typename CGAL::Mesh_complex_3_in_triangulation_3<Tr, Mesh_domain::Corner_index, Mesh_domain::Curve_segment_index> C3t3;
-#else
-    typedef typename CGAL::Mesh_complex_3_in_triangulation_3<Tr> C3t3;
-#endif
-
-    // Mesh Criteria
-    typedef typename CGAL::Mesh_criteria_3<Tr> Mesh_criteria;
-    // typedef typename Mesh_criteria::Facet_criteria Facet_criteria;
-    // typedef typename Mesh_criteria::Cell_criteria Cell_criteria;
-
-    // typedef typename C3t3::Facet_iterator Facet_iterator;
-    typedef typename C3t3::Cell_iterator Cell_iterator;
-
-    typedef typename Tr::Finite_vertices_iterator Finite_vertices_iterator;
-    typedef typename Tr::Vertex_handle Vertex_handle;
-    typedef typename Tr::Point Point_3;
 
     const VecCoord& oldPoints = f_X0.getValue();
     const SeqTriangles& triangles = f_triangles.getValue();

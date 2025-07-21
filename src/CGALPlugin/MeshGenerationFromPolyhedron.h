@@ -29,10 +29,7 @@
 #include <sofa/core/visual/VisualParams.h>
 #include <sofa/defaulttype/VecTypes.h>
 
-#include <CGAL/version.h>
-
-#include <CGAL/Polyhedron_3.h>
-#include <CGAL/Polyhedron_incremental_builder_3.h>
+#include <CGALPlugin/MeshGenerationFromPolyhedron_explicit.h>
 
 
 namespace cgal
