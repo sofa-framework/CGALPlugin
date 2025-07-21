@@ -24,6 +24,7 @@
 #include <sofa/defaulttype/VecTypes.h>
 #include <sofa/core/DataEngine.h>
 #include <sofa/core/topology/BaseMeshTopology.h>
+#include <CGALPlugin/PoissonSurfaceReconstruction_explicit.h>
 
 namespace cgal
 {

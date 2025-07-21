@@ -20,10 +20,7 @@
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
 #include <CGALPlugin/PoissonSurfaceReconstruction.h>
-#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
-#include <CGAL/Polyhedron_3.h>
-#include <CGAL/poisson_surface_reconstruction.h>
-#include <CGAL/property_map.h>
+
 #include <CGALPlugin/config.h>
 #include <sofa/core/ObjectFactory.h>
 
@@ -37,14 +34,6 @@ namespace cgal
 {
 
 using sofa::core::objectmodel::ComponentState ;
-
-typedef CGAL::Exact_predicates_inexact_constructions_kernel Kernel;
-typedef Kernel::Point_3 Point_3;
-typedef Kernel::Vector_3 Vector_3;
-typedef std::pair<Point_3, Vector_3> Pwn;
-typedef CGAL::Polyhedron_3<Kernel> Polyhedron_3;
-typedef Polyhedron_3::Vertex_handle Vertex_handle;
-typedef Polyhedron_3::Halfedge_around_facet_circulator HF_circulator;
 
 PoissonSurfaceReconstruction::PoissonSurfaceReconstruction()
     : d_positionsIn(initData (&d_positionsIn, "position", "Input point cloud positions"))
