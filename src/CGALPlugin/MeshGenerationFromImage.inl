@@ -23,14 +23,12 @@
 
 #include <CGALPlugin/MeshGenerationFromImage.h>
 #include <sofa/type/Quat.h>
+#include <CGAL/Image_3.h>
 
 using namespace sofa;
 
 #define SQR(X)   ((X)*(X))
 
-#if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(3,5,0)
-using namespace CGAL::parameters;
-#endif
 
 namespace cgal
 {
@@ -207,7 +205,7 @@ void MeshGenerationFromImage<DataTypes, _ImageTypes>::doUpdate()
     }
 
 #if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(4,13,0)
-    Mesh_domain domain = Mesh_domain::create_labeled_image_mesh_domain(image3);
+    Mesh_domain   domain = Mesh_domain::create_labeled_image_mesh_domain(image3);
 #else
     Mesh_domain domain(image3);
 #endif

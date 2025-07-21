@@ -6,6 +6,7 @@ set(HEADER_FILES
     ${PLUGIN_CGAL_SRC_DIR}/config.h.in
     ${PLUGIN_CGAL_SRC_DIR}/DecimateMesh.h
     ${PLUGIN_CGAL_SRC_DIR}/DecimateMesh.inl
+    ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromPolyhedron_explicit.h
     ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromPolyhedron.h
     ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromPolyhedron.inl
     ${PLUGIN_CGAL_SRC_DIR}/TriangularConvexHull3D.h
@@ -14,6 +15,7 @@ set(HEADER_FILES
     ${PLUGIN_CGAL_SRC_DIR}/CylinderMesh.inl
     ${PLUGIN_CGAL_SRC_DIR}/Refine2DMesh.h
     ${PLUGIN_CGAL_SRC_DIR}/Refine2DMesh.inl
+    ${PLUGIN_CGAL_SRC_DIR}/PoissonSurfaceReconstruction_explicit.h
     ${PLUGIN_CGAL_SRC_DIR}/PoissonSurfaceReconstruction.h
     ${PLUGIN_CGAL_SRC_DIR}/FrontSurfaceReconstruction.h
     ${PLUGIN_CGAL_SRC_DIR}/UpsamplePointCloud.h
@@ -22,10 +24,12 @@ set(HEADER_FILES
 set(SOURCE_FILES
     ${PLUGIN_CGAL_SRC_DIR}/initCGALPlugin.cpp
     ${PLUGIN_CGAL_SRC_DIR}/DecimateMesh.cpp
+    ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromPolyhedron_explicit.cpp
     ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromPolyhedron.cpp
     ${PLUGIN_CGAL_SRC_DIR}/TriangularConvexHull3D.cpp
     ${PLUGIN_CGAL_SRC_DIR}/CylinderMesh.cpp
     ${PLUGIN_CGAL_SRC_DIR}/Refine2DMesh.cpp
+    ${PLUGIN_CGAL_SRC_DIR}/PoissonSurfaceReconstruction_explicit.cpp
     ${PLUGIN_CGAL_SRC_DIR}/PoissonSurfaceReconstruction.cpp
     ${PLUGIN_CGAL_SRC_DIR}/FrontSurfaceReconstruction.cpp
     ${PLUGIN_CGAL_SRC_DIR}/UpsamplePointCloud.cpp
@@ -44,7 +48,9 @@ message(STATUS "CGAL VERSION = ${CGAL_VERSION}")
 sofa_find_package(image QUIET)
 if(image_FOUND)
     find_package(CGAL REQUIRED COMPONENTS ImageIO)
-    
+
+    list(APPEND SOURCE_FILES ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromImage_explicit.h)
+    list(APPEND SOURCE_FILES ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromImage_explicit.cpp)
     list(APPEND HEADER_FILES ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromImage.h)
     list(APPEND HEADER_FILES ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromImage.inl)
     list(APPEND SOURCE_FILES ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromImage.cpp)

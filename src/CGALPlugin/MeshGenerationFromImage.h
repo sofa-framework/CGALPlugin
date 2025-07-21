@@ -28,26 +28,8 @@
 
 #include <image/CImgData.h>
 
-#include <CGAL/version.h>
-#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
-#include <CGAL/Mesh_triangulation_3.h>
-#include <CGAL/Mesh_complex_3_in_triangulation_3.h>
-#include <CGAL/Mesh_criteria_3.h>
+#include <CGALPlugin/MeshGenerationFromImage_explicit.h>
 
-#if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(4,13,0)
-#include <CGAL/Labeled_mesh_domain_3.h>
-#else
-#include <CGAL/Labeled_image_mesh_domain_3.h>
-#endif
-
-#include <CGAL/Mesh_domain_with_polyline_features_3.h>
-#include <CGAL/make_mesh_3.h>
-#include <CGAL/refine_mesh_3.h>
-#include <CGAL/Image_3.h>
-#include <CGAL/Weighted_point_3.h>
-
-//CGAL
-typedef CGAL::Exact_predicates_inexact_constructions_kernel K;
 
 namespace cgal
 {
@@ -72,35 +54,7 @@ public:
     typedef sofa::core::topology::BaseMeshTopology::Tetra Tetra;
     typedef sofa::core::topology::BaseMeshTopology::SeqTetrahedra SeqTetrahedra;
 
-	// Domain
-    // (we use exact intersection computation with Robust_intersection_traits_3)
-#if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(4,13,0)
-    typedef CGAL::Mesh_domain_with_polyline_features_3<CGAL::Labeled_mesh_domain_3<K> >    Mesh_domain;
-#else
-    typedef CGAL::Mesh_domain_with_polyline_features_3<CGAL::Labeled_image_mesh_domain_3<CGAL::Image_3,K> >    Mesh_domain;
-#endif
-    typedef K::Point_3 Point3;
 
-    typedef std::vector<Point3>	 Polyline;
-    typedef std::list<Polyline>	 Polylines;
-
-    // Triangulation
-    typedef typename CGAL::Mesh_triangulation_3<Mesh_domain>::type Tr;
-    typedef typename CGAL::Mesh_complex_3_in_triangulation_3<Tr,Mesh_domain::Corner_index,Mesh_domain::Curve_segment_index> C3t3;
-
-    // Mesh Criteria
-    typedef typename CGAL::Mesh_criteria_3<Tr> Mesh_criteria;
-    typedef typename Mesh_criteria::Facet_criteria Facet_criteria;
-    typedef typename Mesh_criteria::Cell_criteria Cell_criteria;
-
-    typedef typename C3t3::Facet_iterator Facet_iterator;
-    typedef typename C3t3::Cell_iterator Cell_iterator;
-
-    typedef typename Tr::Finite_vertices_iterator Finite_vertices_iterator;
-    typedef typename Tr::Vertex_handle Vertex_handle;
-    typedef typename Tr::Point Point_3;
-	typedef CGAL::Mesh_constant_domain_field_3<Mesh_domain::R,
-                                           Mesh_domain::Index> Sizing_field;
 
     // image data
     typedef _ImageTypes ImageTypes;
@@ -115,6 +69,9 @@ public:
     typedef sofa::helper::WriteAccessor<sofa::core::objectmodel::Data< TransformType > > waTransform;
     typedef sofa::helper::ReadAccessor<sofa::core::objectmodel::Data< TransformType > > raTransform;
 
+
+    typedef std::vector<Point3> Polyline;
+    typedef std::list<Polyline> Polylines;
 
 public:
     MeshGenerationFromImage();
