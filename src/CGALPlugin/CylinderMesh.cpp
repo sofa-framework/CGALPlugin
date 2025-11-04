@@ -30,9 +30,12 @@
 using namespace sofa::defaulttype;
 namespace cgal
 {
-int CylinderMeshClass = sofa::core::RegisterObject("Generate a regular tetrahedron mesh of a cylinder")
-    .add<CylinderMesh<Vec3Types> >()
-;
+
+void registerCylinderMesh(sofa::core::ObjectFactory* factory)
+{
+    factory->registerObjects(sofa::core::ObjectRegistrationData("Generate a regular tetrahedron mesh of a cylinder")
+    .add<CylinderMesh<Vec3Types> >());
+}
 
 template class SOFA_CGALPLUGIN_API CylinderMesh<Vec3Types>;
  

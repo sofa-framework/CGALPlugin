@@ -30,10 +30,11 @@
 using namespace sofa::defaulttype;
 using namespace cgal;
 
-int CuboidMeshClass = sofa::core::RegisterObject("Generate a regular tetrahedron mesh of a cuboid")
-        .add< CuboidMesh<Vec3Types> >()
- 
-        ;
+void registerCuboidMesh(sofa::core::ObjectFactory* factory)
+{
+    factory->registerObjects(sofa::core::ObjectRegistrationData("Generate a regular tetrahedron mesh of a cuboid")
+    .add< CuboidMesh<Vec3Types> >());
+}
 
 template class SOFA_CGALPLUGIN_API CuboidMesh<Vec3Types>;
  

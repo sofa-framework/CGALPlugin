@@ -31,14 +31,14 @@
 #include <CGALPlugin/config.h>
 #include <sofa/core/ObjectFactory.h>
 
-
-int UpsamplePointCloudClass = sofa::core::RegisterObject("Generates a denser point cloud from an input point cloud")
-        .add< cgal::UpsamplePointCloud >()
-        ;
-
-
 namespace cgal
 {
+
+void registerUpsamplePointCloud(sofa::core::ObjectFactory* factory)
+{
+    factory->registerObjects(sofa::core::ObjectRegistrationData("Generates a denser point cloud from an input point cloud")
+    .add< cgal::UpsamplePointCloud >());
+}
 
 using sofa::helper::ReadAccessor;
 using sofa::helper::WriteAccessor;

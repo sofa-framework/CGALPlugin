@@ -25,14 +25,14 @@
 #include <CGALPlugin/config.h>
 #include <sofa/core/ObjectFactory.h>
 
-
-int FrontSurfaceReconstructionClass = sofa::core::RegisterObject("Generate triangular surface mesh from point cloud")
-        .add< cgal::FrontSurfaceReconstruction >()
-        ;
-
-
 namespace cgal
 {
+
+void registerFrontSurfaceReconstruction(sofa::core::ObjectFactory* factory)
+{
+    factory->registerObjects(sofa::core::ObjectRegistrationData("Generate triangular surface mesh from point cloud")
+    .add< cgal::FrontSurfaceReconstruction >());
+}
 
 using sofa::helper::ReadAccessor;
 using sofa::helper::WriteAccessor;
