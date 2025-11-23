@@ -40,7 +40,6 @@ extern void registerMeshGenerationFromImage(sofa::core::ObjectFactory* factory);
 extern void registerDecimateMesh(sofa::core::ObjectFactory* factory);
 extern void registerTriangularConvexHull3D(sofa::core::ObjectFactory* factory);
 extern void registerRefine2DMesh(sofa::core::ObjectFactory* factory);
-extern void registerCuboidMesh(sofa::core::ObjectFactory* factory);
 
 
 namespace sofa::component
@@ -102,7 +101,6 @@ void registerObjects(sofa::core::ObjectFactory* factory)
     registerDecimateMesh( factory);
     registerTriangularConvexHull3D( factory);
     registerRefine2DMesh( factory);
-    registerCuboidMesh( factory);
 }
 
 } // namespace sofa::component
