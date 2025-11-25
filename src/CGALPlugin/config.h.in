@@ -19,8 +19,7 @@
 *                                                                             *
 * Contact information: contact@sofa-framework.org                             *
 ******************************************************************************/
-#ifndef CGALPLUGIN_CONFIG_H
-#define CGALPLUGIN_CONFIG_H
+#pragma once
 
 #include <sofa/config.h>
 
@@ -34,4 +33,8 @@
 #  define SOFA_CGALPLUGIN_API SOFA_IMPORT_DYNAMIC_LIBRARY
 #endif
 
-#endif
+namespace cgal
+{
+    constexpr const char* MODULE_NAME = "@PROJECT_NAME@";
+    constexpr const char* MODULE_VERSION = "@PROJECT_VERSION@";
+} // namespace cgal

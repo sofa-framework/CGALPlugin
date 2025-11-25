@@ -32,14 +32,16 @@
 #include <CGALPlugin/config.h>
 #include <sofa/core/ObjectFactory.h>
 
-int PoissonSurfaceReconstructionClass = sofa::core::RegisterObject("Generate triangular surface mesh from point cloud")
-        .add< cgal::PoissonSurfaceReconstruction >()
-        ;
-
 using namespace sofa;
 
 namespace cgal
 {
+
+void registerPoissonSurfaceReconstruction(sofa::core::ObjectFactory* factory)
+{
+    factory->registerObjects(sofa::core::ObjectRegistrationData("Generate triangular surface mesh from point cloud")
+    .add< cgal::PoissonSurfaceReconstruction >());
+}
 
 using sofa::core::objectmodel::ComponentState ;
 

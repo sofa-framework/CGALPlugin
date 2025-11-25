@@ -22,10 +22,27 @@
 #include <CGALPlugin/config.h>
 #include <CGALPlugin/MeshGenerationFromPolyhedron.h>
 
-namespace sofa
-{
+#include <sofa/core/ObjectFactory.h>
+#include <sofa/helper/system/PluginManager.h>
 
-namespace component
+
+namespace cgal
+{
+    extern void registerCylinderMesh(sofa::core::ObjectFactory* factory);
+    extern void registerFrontSurfaceReconstruction(sofa::core::ObjectFactory* factory);
+    extern void registerPoissonSurfaceReconstruction(sofa::core::ObjectFactory* factory);
+    extern void registerUpsamplePointCloud(sofa::core::ObjectFactory* factory);
+    extern void registerBooleanOperations(sofa::core::ObjectFactory* factory);
+}
+
+extern void registerMeshGenerationFromPolyhedron(sofa::core::ObjectFactory* factory);
+extern void registerMeshGenerationFromImage(sofa::core::ObjectFactory* factory);
+extern void registerDecimateMesh(sofa::core::ObjectFactory* factory);
+extern void registerTriangularConvexHull3D(sofa::core::ObjectFactory* factory);
+extern void registerRefine2DMesh(sofa::core::ObjectFactory* factory);
+
+
+namespace sofa::component
 {
 
 //Here are just several convenient functions to help users know what the plugin contains 
@@ -36,7 +53,7 @@ extern "C" {
     SOFA_CGALPLUGIN_API const char* getModuleVersion();
     SOFA_CGALPLUGIN_API const char* getModuleLicense();
     SOFA_CGALPLUGIN_API const char* getModuleDescription();
-    SOFA_CGALPLUGIN_API const char* getModuleComponentList();
+    SOFA_CGALPLUGIN_API void registerObjects(sofa::core::ObjectFactory* factory);
 }
 
 void initExternalModule()
@@ -44,18 +61,21 @@ void initExternalModule()
     static bool first = true;
     if (first)
     {
+        // make sure that this plugin is registered into the PluginManager
+        sofa::helper::system::PluginManager::getInstance().registerPlugin(cgal::MODULE_NAME);
+
         first = false;
     }
 }
 
 const char* getModuleName()
 {
-    return "CGALPlugin";
+    return cgal::MODULE_NAME;
 }
 
 const char* getModuleVersion()
 {
-    return "0.2";
+    return cgal::MODULE_VERSION;
 }
 
 const char* getModuleLicense()
@@ -69,15 +89,18 @@ const char* getModuleDescription()
     return "Use CGAL functionnalities into SOFA";
 }
 
-const char* getModuleComponentList()
+void registerObjects(sofa::core::ObjectFactory* factory)
 {
-    return "MeshGenerationFromPolyhedron, MeshGenerationFromImage, TriangularConvexHull3D, DecimateMesh, CylinderMesh, Refine2DMesh";
+    cgal::registerCylinderMesh(factory);
+    cgal::registerFrontSurfaceReconstruction(factory);
+    cgal::registerPoissonSurfaceReconstruction(factory);
+    cgal::registerUpsamplePointCloud(factory);
+    cgal::registerBooleanOperations(factory);
+    registerMeshGenerationFromPolyhedron( factory);
+    registerMeshGenerationFromImage( factory);
+    registerDecimateMesh( factory);
+    registerTriangularConvexHull3D( factory);
+    registerRefine2DMesh( factory);
 }
 
-
-
-}
-
-}
-
-
+} // namespace sofa::component

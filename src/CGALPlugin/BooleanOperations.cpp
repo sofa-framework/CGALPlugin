@@ -23,14 +23,16 @@
 #include <CGALPlugin/config.h>
 #include <sofa/core/ObjectFactory.h>
 
-int BooleanOperationsClass = sofa::core::RegisterObject("Functions to corefine triangulated surface meshes and compute triangulated surface meshes of the union, difference and intersection of the bounded volumes.")
-        .add< cgal::BooleanOperations >()
-        ;
-
 using namespace sofa;
 
 namespace cgal
 {
+
+void registerBooleanOperations(sofa::core::ObjectFactory* factory)
+{
+    factory->registerObjects(sofa::core::ObjectRegistrationData("Functions to corefine triangulated surface meshes and compute triangulated surface meshes of the union, difference and intersection of the bounded volumes.")
+    .add< cgal::BooleanOperations >());
+}
 
 using sofa::core::objectmodel::ComponentState ;
 

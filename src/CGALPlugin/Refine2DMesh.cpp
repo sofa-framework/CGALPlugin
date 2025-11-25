@@ -29,8 +29,10 @@
 using namespace sofa::defaulttype;
 using namespace cgal;
 
-int Refine2DMeshClass = sofa::core::RegisterObject("Refine 2D mesh using Delaunay triangulation")
-    .add< Refine2DMesh<Vec3Types> >()
-;
+void registerRefine2DMesh(sofa::core::ObjectFactory* factory)
+{
+    factory->registerObjects(sofa::core::ObjectRegistrationData("Refine 2D mesh using Delaunay triangulation")
+    .add< Refine2DMesh<Vec3Types> >());
+}
 
 template class SOFA_CGALPLUGIN_API cgal::Refine2DMesh<Vec3Types>;

@@ -29,10 +29,11 @@
 using namespace sofa::defaulttype;
 using namespace cgal;
 
-int DecimateMeshClass = sofa::core::RegisterObject("Simplification of a mesh by the process of reducing the number of faces")
-        .add< DecimateMesh<Vec3Types> >()
- 
-        ;
+void registerDecimateMesh(sofa::core::ObjectFactory* factory)
+{
+    factory->registerObjects(sofa::core::ObjectRegistrationData("Simplification of a mesh by the process of reducing the number of faces")
+    .add< DecimateMesh<Vec3Types> >());
+}
 
 template class SOFA_CGALPLUGIN_API cgal::DecimateMesh<Vec3Types>;
  

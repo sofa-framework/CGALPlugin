@@ -29,10 +29,11 @@
 using namespace sofa::defaulttype;
 using namespace cgal;
 
-int MeshGenerationFromImageClass = sofa::core::RegisterObject("Generate tetrahedral mesh from image")
-        .add< MeshGenerationFromImage<Vec3Types,ImageUC> >()
- 
-        ;
+void registerMeshGenerationFromImage(sofa::core::ObjectFactory* factory)
+{
+    factory->registerObjects(sofa::core::ObjectRegistrationData("Generate tetrahedral mesh from image")
+    .add< MeshGenerationFromImage<Vec3Types,ImageUC> >());
+}
 
 template class SOFA_CGALPLUGIN_API cgal::MeshGenerationFromImage<Vec3Types, ImageUC>;
 
