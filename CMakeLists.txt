@@ -48,6 +48,7 @@ if(image_FOUND)
     list(APPEND HEADER_FILES ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromImage.h)
     list(APPEND HEADER_FILES ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromImage.inl)
     list(APPEND SOURCE_FILES ${PLUGIN_CGAL_SRC_DIR}/MeshGenerationFromImage.cpp)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE "-DSOFA_CGAL_WITH_IMAGE")
 endif()
 
 # Create the plugin library.
