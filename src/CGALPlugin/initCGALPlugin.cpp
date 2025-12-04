@@ -37,7 +37,7 @@ namespace cgal
 
 extern void registerMeshGenerationFromPolyhedron(sofa::core::ObjectFactory* factory);
 
-#ifdef SOFA_CGAL_WITH_IMAGE
+#ifdef CGALPLUGIN_HAVE_IMAGE
 extern void registerMeshGenerationFromImage(sofa::core::ObjectFactory* factory);
 #endif
 extern void registerDecimateMesh(sofa::core::ObjectFactory* factory);
@@ -100,7 +100,7 @@ void registerObjects(sofa::core::ObjectFactory* factory)
     cgal::registerUpsamplePointCloud(factory);
     cgal::registerBooleanOperations(factory);
     registerMeshGenerationFromPolyhedron( factory);
-#ifdef SOFA_CGAL_WITH_IMAGE
+#ifdef CGALPLUGIN_HAVE_IMAGE
     registerMeshGenerationFromImage( factory);
 #endif
     registerDecimateMesh( factory);
