@@ -36,7 +36,10 @@ namespace cgal
 }
 
 extern void registerMeshGenerationFromPolyhedron(sofa::core::ObjectFactory* factory);
+
+#ifdef CGALPLUGIN_HAVE_IMAGE
 extern void registerMeshGenerationFromImage(sofa::core::ObjectFactory* factory);
+#endif
 extern void registerDecimateMesh(sofa::core::ObjectFactory* factory);
 extern void registerTriangularConvexHull3D(sofa::core::ObjectFactory* factory);
 extern void registerRefine2DMesh(sofa::core::ObjectFactory* factory);
@@ -97,7 +100,9 @@ void registerObjects(sofa::core::ObjectFactory* factory)
     cgal::registerUpsamplePointCloud(factory);
     cgal::registerBooleanOperations(factory);
     registerMeshGenerationFromPolyhedron( factory);
+#ifdef CGALPLUGIN_HAVE_IMAGE
     registerMeshGenerationFromImage( factory);
+#endif
     registerDecimateMesh( factory);
     registerTriangularConvexHull3D( factory);
     registerRefine2DMesh( factory);
