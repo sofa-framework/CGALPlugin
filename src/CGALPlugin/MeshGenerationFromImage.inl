@@ -29,6 +29,7 @@ using namespace sofa;
 #define SQR(X)   ((X)*(X))
 
 #if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(3,5,0)
+using namespace CGAL;
 using namespace CGAL::parameters;
 #endif
 
