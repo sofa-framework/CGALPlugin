@@ -151,7 +151,7 @@ jobs:
 
   deploy:
     name: Deploy artifacts
-    if: always() && startsWith(github.ref, 'refs/heads/') # we are on a branch (not a PR)
+    if: always() && startsWith(github.repository, 'sofa-framework') && (startsWith(github.ref, 'refs/heads/') || startsWith(github.ref, 'refs/tags/')) # we are not on a fork and on a branch or a tag (not a PR)    needs: [build-and-test]
     needs: [build-and-test]
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -173,7 +173,8 @@ jobs:
         with:
           name: ${{ github.ref_name }}
           tag_name: release-${{ github.ref_name }}
-          fail_on_unmatched_files: true
+          fail_on_unmatched_files: false
+          target_commitish: ${{ github.sha }}
           files: |
             artifacts/CGALPlugin_*_Linux.zip
             artifacts/CGALPlugin_*_Windows.zip
