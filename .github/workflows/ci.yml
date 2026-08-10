@@ -3,6 +3,8 @@ name: CI
 on:
   workflow_dispatch:
   push:
+  schedule:
+    - cron:  '0 5 * * *' # nightly job at 5 a.m. UTC to make sure sofa's nightly is available
 
 jobs:
   build-and-test:
